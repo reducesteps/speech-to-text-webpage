@@ -2,7 +2,6 @@
 
 let isListening = false;
 let recognition;
-let savedTexts = [];
 
 window.onload = () => {
   recognition = new webkitSpeechRecognition();
@@ -13,7 +12,7 @@ window.onload = () => {
       .map(result => result[0])
       .map(result => result.transcript)
       .join('');
-    document.getElementById('textArea').value += ' ' + transcript;
+    document.getElementById('textArea').value = transcript;
   };
 };
 
@@ -40,28 +39,12 @@ document.getElementById('clearText').addEventListener('click', () => {
 
 document.getElementById('pasteFront').addEventListener('click', () => {
   navigator.clipboard.readText().then(clipText => {
-    document.getElementById('textArea').value = ' ' + clipText + ' ' + document.getElementById('textArea').value;
+    document.getElementById('textArea').value = clipText + document.getElementById('textArea').value;
   });
 });
 
 document.getElementById('pasteBehind').addEventListener('click', () => {
   navigator.clipboard.readText().then(clipText => {
-    document.getElementById('textArea').value += ' ' + clipText;
+    document.getElementById('textArea').value += clipText;
   });
-});
-
-document.getElementById('addDropdown').addEventListener('click', () => {
-  const text = document.getElementById('textArea').value;
-  savedTexts.push(text);
-  const dropdown = document.getElementById('savedTextDropdown');
-  const option = document.createElement('option');
-  option.value = text;
-  option.text = text;
-  dropdown.add(option);
-});
-
-document.getElementById('loadDropdown').addEventListener('click', () => {
-  const dropdown = document.getElementById('savedTextDropdown');
-  const selectedText = dropdown.options[dropdown.selectedIndex].value;
-  document.getElementById('textArea').value = selectedText;
 });

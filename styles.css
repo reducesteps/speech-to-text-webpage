@@ -1,1 +1,10 @@
 /* Custom CSS for Speech-to-Text Web Page */
+
+/* Style for new buttons and dropdown */
+.btn-success, .btn-dark {
+  margin-left: 5px;
+}
+
+.form-control {
+  margin-top: 5px;
+}

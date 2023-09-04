@@ -17,11 +17,6 @@
       <button id="clearText" class="btn btn-danger">Clear</button>
       <button id="pasteFront" class="btn btn-info">Paste in Front</button>
       <button id="pasteBehind" class="btn btn-warning">Paste Behind</button>
-      <button id="addDropdown" class="btn btn-success">Add to Dropdown</button>
-      <button id="loadDropdown" class="btn btn-dark">Load from Dropdown</button>
-    </div>
-    <div class="mt-3">
-      <select id="savedTextDropdown" class="form-control"></select>
     </div>
   </div>
   <script src="script.js"></script>
