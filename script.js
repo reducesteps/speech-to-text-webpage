@@ -8,12 +8,17 @@ window.onload = () => {
   recognition = new webkitSpeechRecognition();
   recognition.continuous = true;
   recognition.interimResults = true;
+  let finalTranscript = "";
   recognition.onresult = (event) => {
     let transcript = Array.from(event.results)
       .map(result => result[0])
       .map(result => result.transcript)
       .join('');
-    document.getElementById('textArea').value += ' ' + transcript;
+    finalTranscript += transcript;
+    document.getElementById('textArea').value = finalTranscript;
+  };
+  recognition.onerror = (event) => {
+    console.error('Speech recognition error:', event);
   };
 };
 

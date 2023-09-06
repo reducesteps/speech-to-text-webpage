@@ -15,12 +15,9 @@ window.onload = () => {
       .join('');
     document.getElementById('textArea').value += ' ' + transcript;
   };
-<<<<<<< HEAD
-=======
   recognition.onerror = (event) => {
     console.error('Speech recognition error:', event);
   };
->>>>>>> d9b1148 (Fixed the Start Listening button issue)
 };
 
 document.getElementById('toggleListen').addEventListener('click', () => {
@@ -32,6 +29,11 @@ document.getElementById('toggleListen').addEventListener('click', () => {
     recognition.stop();
     document.getElementById('toggleListen').textContent = 'Start Listening';
   }
+  recognition.onend = () => {
+    if (isListening) {
+      recognition.start();
+    }
+  };
 });
 
 document.getElementById('copyText').addEventListener('click', () => {
